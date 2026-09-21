@@ -1,100 +1,109 @@
+/* =========================================================
+   Presentation controller: breadcrumb, sidebar, modals, keys
+   ========================================================= */
 (function () {
   'use strict';
 
-  const stage        = document.getElementById('stage');
-  const slides       = Array.from(stage.querySelectorAll('.slide'));
-  const toc          = document.getElementById('toc');
-  const crumb        = document.getElementById('crumbCurrent');
-  const counter      = document.getElementById('counter');
-  const progressFill = document.getElementById('progressFill');
-  const prevBtn      = document.getElementById('prevBtn');
-  const nextBtn      = document.getElementById('nextBtn');
-
-  const sidebar      = document.getElementById('sidebar');
-  const backdrop     = document.getElementById('sidebarBackdrop');
-  const menuToggle   = document.getElementById('menuToggle');
-
-  const overlay      = document.getElementById('modalOverlay');
-  const modalTitle   = document.getElementById('modalTitle');
-  const modalBody    = document.getElementById('modalBody');
-  const modalClose   = document.getElementById('modalClose');
+  const slides      = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  const tocLinks    = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+  const crumb       = document.getElementById('crumbCurrent');
+  const prevBtn     = document.getElementById('prevBtn');
+  const nextBtn     = document.getElementById('nextBtn');
+  const progressBar = document.getElementById('progressBar');
+  const sidebar     = document.getElementById('sidebar');
+  const sidebarBtn  = document.getElementById('sidebarToggle');
+  const backdrop    = document.getElementById('sidebarBackdrop');
+  const overlay     = document.getElementById('modalOverlay');
+  const modalTitle  = document.getElementById('modalTitle');
+  const modalBody   = document.getElementById('modalBody');
+  const modalClose  = document.getElementById('modalClose');
 
   let current = 0;
   let lastFocused = null;
 
-  /* ---------- اعداد فارسی ---------- */
-  const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-  const toFa = (n) => String(n).replace(/\d/g, (d) => FA_DIGITS[+d]);
-
-  /* ---------- رندر MathJax ---------- */
-  function typeset(nodes) {
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise(nodes).catch(() => {});
-    }
-  }
-
-  /* ---------- ساخت فهرست سایدبار ---------- */
-  slides.forEach((slide, i) => {
-    const label = slide.dataset.nav || slide.dataset.title || ('اسلاید ' + (i + 1));
-    const li = document.createElement('li');
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.innerHTML = '<span class="idx"></span><span class="txt"></span>';
-    btn.querySelector('.idx').textContent = toFa(i + 1);
-    btn.querySelector('.txt').textContent = label;
-    btn.addEventListener('click', () => {
-      goTo(i);
-      if (window.matchMedia('(max-width: 860px)').matches) closeSidebar();
-    });
-    li.appendChild(btn);
-    toc.appendChild(li);
-  });
-  const tocItems = Array.from(toc.children);
-
-  /* ---------- جابه‌جایی اسلاید ---------- */
-  function goTo(index) {
-    if (index < 0 || index >= slides.length) return;
-    slides[current].classList.remove('active');
-    tocItems[current].classList.remove('active');
-
+  /* ---------------- Active slide state ---------------- */
+  function setActive(index) {
+    if (index < 0) index = 0;
+    if (index > slides.length - 1) index = slides.length - 1;
     current = index;
-    const slide = slides[current];
-    slide.classList.add('active');
-    tocItems[current].classList.add('active');
 
-    crumb.textContent = slide.dataset.title || slide.dataset.nav || '';
-    counter.textContent = toFa(current + 1) + ' / ' + toFa(slides.length);
-    progressFill.style.width = ((current + 1) / slides.length * 100) + '%';
+    crumb.textContent = slides[current].getAttribute('data-title') || '';
 
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === slides.length - 1;
+    tocLinks.forEach(function (link, i) {
+      const on = (i === current);
+      link.classList.toggle('active', on);
+      if (on) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
 
-    stage.scrollTo({ top: 0, behavior: 'smooth' });
-    tocItems[current].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    prevBtn.disabled = (current === 0);
+    nextBtn.disabled = (current === slides.length - 1);
+    progressi === current);
+      link.classList.toggle('active', on);
+      if (on) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
 
-    typeset([slide]);
-    history.replaceState(null, '', '#' + (current + 1));
+    prevBtn.disabled = (current === 0);
+    nextBtn.disabled = (current === slides.length - 1);
+    progressBar.style.width = ((current + 1) / slides.length * 100) + '%';
   }
 
-  const next = () => goTo(Math.min(current + 1, slides.length - 1));
-  const prev = () => goTo(Math.max(current - 1, 0));
+  function goTo(index) {ersectionObserver(function (entries) {
+    let best = null;
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+    });
+    if (best) {
+      const i = slides.indexOf(best.target);
+      if (i !== -1 && i !== current) setActive(i);
+    }
+  }, { rootMargin: '-25% 0px -55% 0px', threshold: ---------------- Sidebar ---------------- */0.75] });
 
-  nextBtn.addEventListener('click', next);
-  prevBtn.addEventListener('click', prev);
+  slides.forEach(function (s) { spy.observe(s); });
 
-  /* ---------- پاپ‌آپ ---------- */
+  /* ---------------- Sidebar ---------------- */
+  function openSidebar() {
+    sidebar.classList.add('open');
+    backdrop.hidden = false;
+    sidebarBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeSidebar() {
+    if (!sidebar.classList.contains('open')) return;
+    sidebar.classList.remove('open');
+    backdrop.hidden = true;
+    sidebarBtn.setAttribute('aria-expanded', 'false');
+  }
+  sidebarBtn.addEventListener('click', function () {
+    if (sidebar.classList.contains('open')) closeSidebar();
+    else openSidebar();
+  });
+  backdrop.addEventListener('click', closeSidebar);
+
+  tocLinks.forEach(function (link) {
+    link.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      goTo(parseInt(link.getAttribute('data-index'), 10));
+    });
+  });
+
+  /* ---------------- Nav buttons ---------------- */
+  prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+  /* ---------------- Modals ---------------- */
   function buildBody(raw) {
-    modalBody.innerHTML = '';
-    const parts = String(raw)
-      .split(/\n|\u2022|;/)
-      .map((s) => s.trim())
-      .filter(Boolean);
+    modalBody.textContent = '';
+    const parts = String(raw || '').split('||')
+      .map(function (s) { return s.trim(); })
+      .filter(function (s) { return s.length > 0; });
 
     if (parts.length > 1) {
       const ul = document.createElement('ul');
-      parts.forEach((p) => {
+      parts.forEach(function (p) {
         const li = document.createElement('li');
-        li.textContent = p.replace(/^[-–—]\s*/, '');
+        li.textContent = p;
         ul.appendChild(li);
       });
       modalBody.appendChild(ul);
@@ -107,12 +116,14 @@
 
   function openModal(title, body) {
     lastFocused = document.activeElement;
-    modalTitle.textContent = title || '';
-    buildBody(body || '');
+    modalTitle.textContent = title;
+    buildBody(body);
     overlay.hidden = false;
     document.body.style.overflow = 'hidden';
     modalClose.focus();
-    typeset([modalBody, modalTitle]);
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([modalBody]).catch(function () {});
+    }
   }
 
   function closeModal() {
@@ -122,72 +133,77 @@
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.pop-btn');
+  document.addEventListener('click', function (ev) {
+    const btn = ev.target.closest ? ev.target.closest('.popup-btn') : null;
     if (btn) {
-      openModal(btn.dataset.modalTitle, btn.dataset.modalBody);
+      openModal(btn.getAttribute('data-modal-title') || '',
+                btn.getAttribute('data-modal-body') || '');
     }
   });
 
   modalClose.addEventListener('click', closeModal);
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-
-  /* ---------- سایدبار موبایل ---------- */
-  function openSidebar() {
-    sidebar.classList.add('open');
-    backdrop.hidden = false;
-    menuToggle.setAttribute('aria-expanded', 'true');
-  }
-  function closeSidebar() {
-    sidebar.classList.remove('open');
-    backdrop.hidden = true;
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  overlay.addEventListener('click', function (ev) {
+    if (ev.target === overlay) closeModal();
   });
-  backdrop.addEventListener('click', closeSidebar);
 
-  /* ---------- کیبورد (RTL: چپ = بعدی) ---------- */
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+  /* Focus trap */
+  overlay.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Tab') return;
+    const f = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+    else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+  });
+
+  /* ---------------- Keyboard ---------------- */
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') {
       if (!overlay.hidden) { closeModal(); return; }
-      if (sidebar.classList.contains('open')) { closeSidebar(); return; }
+      closeSidebar();
+      return;
     }
+
     if (!overlay.hidden) return;
 
-    const tag = (e.target.tagName || '').toLowerCase();
-    if (tag === 'input' || tag === 'textarea') return;
+    const tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
 
-    switch (e.key) {
-      case 'ArrowLeft':  e.preventDefault(); next(); break;
-      case 'ArrowRight': e.preventDefault(); prev(); break;
+    /* RTL: ArrowLeft => next, ArrowRight => previous */
+    switch (ev.key) {
+      case 'ArrowLeft':
       case 'PageDown':
-      case ' ':          e.preventDefault(); next(); break;
-      case 'PageUp':     e.preventDefault(); prev(); break;
-      case 'Home':       e.preventDefault(); goTo(0); break;
-      case 'End':        e.preventDefault(); goTo(slides.length - 1); break;
-      default: break;
+      case 'ArrowDown':
+        ev.preventDefault(); goTo(current + 1); break;
+      case 'ArrowRight':
+      case 'PageUp':
+      case 'ArrowUp':
+        ev.preventDefault(); goTo(current - 1); break;
+      case 'Home':
+        ev.preventDefault(); goTo(0); break;
+      case 'End':
+        ev.preventDefault(); goTo(slides.length - 1); break;
+      case ' ':
+      case 'Enter':
+        if (document.activeElement === document.body) { ev.preventDefault(); goTo(current + 1); }
+        break;
     }
   });
 
-  /* ---------- سوایپ لمسی ---------- */
-  let touchX = null, touchY = null;
-  stage.addEventListener('touc'); goTo(slides.length - 1); break;
-      default: break;
+  /* ---------------- Init ---------------- */
+  function init() {
+    const hash = window.location.hash;
+    let start = 0;
+    if (hash) {
+      const target = document.querySelector(hash);
+      const i = slides.indexOf(target);
+      if (i !== -1) start = i;
     }
-  });
-
-  /* ---------- سوایپ لمسی ---------- */
-  let touchX = null, touchY = null;
-  stage.addEventListener('toucnst dy = e.changedTouches[0].clientY - touchY;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      dx < 0 ? next() : prev();
+    setActive(start);
+    if (start > 0) {
+      slides[start].scrollIntoView({ behavior: 'auto', block: 'start' });
     }
-    touchX = touchY = null;
-  }, { passive: true });
+  }
 
-  /* ---------- شروع ---------- */
-  const fromHash = parseInt((location.hash || '').replace('#', ''), 10);
-  goTo(Number.isInteger(fromHash) && fromHash >= 1 && fromHash <= slides.length ? fromHash - 1 : 0);
+  init();
 })();
