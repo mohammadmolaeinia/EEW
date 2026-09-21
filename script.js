@@ -173,7 +173,7 @@
 
   /* ---------- سوایپ لمسی ---------- */
   let touchX = null, touchY = null;
-  stage.addEventListener('touc); goTo(slides.length - 1); break;
+  stage.addEventListener('touc'); goTo(slides.length - 1); break;
       default: break;
     }
   });
