@@ -1,209 +1,165 @@
-/* =========================================================
-   Presentation controller: breadcrumb, sidebar, modals, keys
-   ========================================================= */
-(function () {
+/* ==========================================================================
+   EEW Presentation SPA — script.js
+   ========================================================================== */
+
+(() => {
   'use strict';
 
-  const slides      = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  const tocLinks    = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
-  const crumb       = document.getElementById('crumbCurrent');
-  const prevBtn     = document.getElementById('prevBtn');
-  const nextBtn     = document.getElementById('nextBtn');
-  const progressBar = document.getElementById('progressBar');
-  const sidebar     = document.getElementById('sidebar');
-  const sidebarBtn  = document.getElementById('sidebarToggle');
-  const backdrop    = document.getElementById('sidebarBackdrop');
-  const overlay     = document.getElementById('modalOverlay');
-  const modalTitle  = document.getElementById('modalTitle');
-  const modalBody   = document.getElementById('modalBody');
-  const modalClose  = document.getElementById('modalClose');
+  /* ── DOM refs ─────────────────────────────────────────────────── */
+  const menuToggle   = document.getElementById('menuToggle');
+  const scrim        = document.getElementById('scrim');
+  const sidebar      = document.getElementById('sidebar');
+  const sidebarNav   = document.getElementById('sidebarNav');
+  const breadcrumb   = document.getElementById('breadcrumb');
+  const progressBar  = document.getElementById('progressBar');
+  const slidesWrap   = document.getElementById('slides');
+  const prevBtn      = document.getElementById('prevBtn');
+  const nextBtn      = document.getElementById('nextBtn');
+  const slideCounter = document.getElementById('slideCounter');
+  const modal        = document.getElementById('modal');
+  const modalTitle   = document.getElementById('modalTitle');
+  const modalBody    = document.getElementById('modalBody');
+  const modalClose   = document.getElementById('modalClose');
+  const modalStore   = document.getElementById('modalStore');
 
-  let current = 0;
-  let lastFocused = null;
+  /* ── State ────────────────────────────────────────────────────── */
+  const slides = Array.from(slidesWrap.querySelectorAll('.slide'));
+  let current  = 0;
 
-  /* ---------------- Active slide state ---------------- */
-  function setActive(index) {
-    if (index < 0) index = 0;
-    if (index > slides.length - 1) index = slides.length - 1;
-    current = index;
+  /* ── Persian numerals ─────────────────────────────────────────── */
+  const toPersian = n =>
+    String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 
-    crumb.textContent = slides[current].getAttribute('data-title') || '';
-
-    tocLinks.forEach(function (link, i) {
-      const on = (i === current);
-      link.classList.toggle('active', on);
-      if (on) link.setAttribute('aria-current', 'true');
-      else link.removeAttribute('aria-current');
+  /* ── Build sidebar nav ────────────────────────────────────────── */
+  slides.forEach((slide, i) => {
+    const label = slide.dataset.nav || `اسلاید ${toPersian(i + 1)}`;
+    const btn   = document.createElement('button');
+    btn.type      = 'button';
+    btn.className = 'nav-item';
+    btn.innerHTML = `
+      <span class="nav-item__num">${toPersian(i + 1)}</span>
+      <span class="nav-item__label">${label}</span>
+    `;
+    btn.addEventListener('click', () => {
+      goTo(i);
+      closeSidebar();
     });
+    sidebarNav.appendChild(btn);
+  });
 
-    prevBtn.disabled = (current === 0);
-    nextBtn.disabled = (current === slides.length - 1);
-    progressi === current);
-      link.classList.toggle('active', on);
-      if (on) link.setAttribute('aria-current', 'true');
-      else link.removeAttribute('aria-current');
-    });
+  /* ── Go to slide ──────────────────────────────────────────────── */
+  function goTo(index) {
+    slides[current].classList.remove('is-active');
+    sidebarNav.children[current].classList.remove('is-active');
 
-    prevBtn.disabled = (current === 0);
-    nextBtn.disabled = (current === slides.length - 1);
-    progressBar.style.width = ((current + 1) / slides.length * 100) + '%';
+    current = Math.max(0, Math.min(index, slides.length - 1));
+
+    slides[current].classList.add('is-active');
+    sidebarNav.children[current].classList.add('is-active');
+
+    updateMeta();
+    slides[current].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  function goTo(index) {ersectionObserver(function (entries) {
-    let best = null;
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
-    });
-    if (best) {
-      const i = slides.indexOf(best.target);
-      if (i !== -1 && i !== current) setActive(i);
-    }
-  }, { rootMargin: '-25% 0px -55% 0px', threshold: ---------------- Sidebar ---------------- */0.75] });
+  /* ── Update breadcrumb / progress / counter / buttons ────────── */
+  function updateMeta() {
+    const total   = slides.length;
+    const pct     = Math.round(((current + 1) / total) * 100);
 
-  slides.forEach(function (s) { spy.observe(s); });
+    /* progress bar */
+    progressBar.style.width = pct + '%';
+    document.getElementById('progress')
+      .setAttribute('aria-valuenow', pct);
 
-  /* ---------------- Sidebar ---------------- */
+    /* counter */
+    slideCounter.textContent =
+      `${toPersian(current + 1)} / ${toPersian(total)}`;
+
+    /* buttons */
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+
+    /* breadcrumb */
+    const crumb = slides[current].dataset.crumb || '';
+    breadcrumb.innerHTML = `
+      <span class="breadcrumb__item">ارائه</span>
+      <span class="breadcrumb__sep">›</span>
+      <span class="breadcrumb__item is-current">${crumb}</span>
+    `;
+  }
+
+  /* ── Prev / Next buttons ──────────────────────────────────────── */
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  /* ── Keyboard navigation ──────────────────────────────────────── */
+  document.addEventListener('keydown', e => {
+    if (modal.classList.contains('is-open')) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp')   goTo(current - 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowDown')  goTo(current + 1);
+  });
+
+  /* ── Sidebar toggle ───────────────────────────────────────────── */
   function openSidebar() {
-    sidebar.classList.add('open');
-    backdrop.hidden = false;
-    sidebarBtn.setAttribute('aria-expanded', 'true');
+    sidebar.classList.add('is-open');
+    scrim.hidden = false;
+    scrim.classList.add('is-open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    // scroll active item into view
+    sidebarNav.children[current]?.scrollIntoView({ block: 'nearest' });
   }
+
   function closeSidebar() {
-    if (!sidebar.classList.contains('open')) return;
-    sidebar.classList.remove('open');
-    backdrop.hidden = true;
-    sidebarBtn.setAttribute('aria-expanded', 'false');
-  }
-  sidebarBtn.addEventListener('click', function () {
-    if (sidebar.classList.contains('open')) closeSidebar();
-    else openSidebar();
-  });
-  backdrop.addEventListener('click', closeSidebar);
-
-  tocLinks.forEach(function (link) {
-    link.addEventListener('click', function (ev) {
-      ev.preventDefault();
-      goTo(parseInt(link.getAttribute('data-index'), 10));
-    });
-  });
-
-  /* ---------------- Nav buttons ---------------- */
-  prevBtn.addEventListener('click', function () { goTo(current - 1); });
-  nextBtn.addEventListener('click', function () { goTo(current + 1); });
-
-  /* ---------------- Modals ---------------- */
-  function buildBody(raw) {
-    modalBody.textContent = '';
-    const parts = String(raw || '').split('||')
-      .map(function (s) { return s.trim(); })
-      .filter(function (s) { return s.length > 0; });
-
-    if (parts.length > 1) {
-      const ul = document.createElement('ul');
-      parts.forEach(function (p) {
-        const li = document.createElement('li');
-        li.textContent = p;
-        ul.appendChild(li);
-      });
-      modalBody.appendChild(ul);
-    } else {
-      const p = document.createElement('p');
-      p.textContent = parts[0] || '';
-      modalBody.appendChild(p);
-    }
+    sidebar.classList.remove('is-open');
+    scrim.hidden = true;
+    scrim.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
   }
 
-  function openModal(title, body) {
-    lastFocused = document.activeElement;
-    modalTitle.textContent = title;
-    buildBody(body);
-    overlay.hidden = false;
-    document.body.style.overflow = 'hidden';
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.contains('is-open') ? closeSidebar() : openSidebar();
+  });
+
+  scrim.addEventListener('click', closeSidebar);
+
+  /* ── Modal ────────────────────────────────────────────────────── */
+  function openModal(id) {
+    const tpl = modalStore.querySelector(`[data-modal-id="${id}"]`);
+    if (!tpl) return;
+    modalTitle.textContent = tpl.dataset.modalTitle || '';
+    modalBody.innerHTML    = '';
+    modalBody.appendChild(tpl.content.cloneNode(true));
+    modal.classList.add('is-open');
     modalClose.focus();
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise([modalBody]).catch(function () {});
-    }
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
-    if (overlay.hidden) return;
-    overlay.hidden = true;
+    modal.classList.remove('is-open');
     document.body.style.overflow = '';
-    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
-  document.addEventListener('click', function (ev) {
-    const btn = ev.target.closest ? ev.target.closest('.popup-btn') : null;
-    if (btn) {
-      openModal(btn.getAttribute('data-modal-title') || '',
-                btn.getAttribute('data-modal-body') || '');
-    }
+  /* delegate info-btn clicks inside slides */
+  slidesWrap.addEventListener('click', e => {
+    const btn = e.target.closest('[data-modal]');
+    if (btn) openModal(btn.dataset.modal);
   });
 
   modalClose.addEventListener('click', closeModal);
-  overlay.addEventListener('click', function (ev) {
-    if (ev.target === overlay) closeModal();
+
+  /* click outside dialog closes modal */
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
   });
 
-  /* Focus trap */
-  overlay.addEventListener('keydown', function (ev) {
-    if (ev.key !== 'Tab') return;
-    const f = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
-    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
-    else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
-  });
-
-  /* ---------------- Keyboard ---------------- */
-  document.addEventListener('keydown', function (ev) {
-    if (ev.key === 'Escape') {
-      if (!overlay.hidden) { closeModal(); return; }
-      closeSidebar();
-      return;
-    }
-
-    if (!overlay.hidden) return;
-
-    const tag = (document.activeElement && document.activeElement.tagName) || '';
-    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-
-    /* RTL: ArrowLeft => next, ArrowRight => previous */
-    switch (ev.key) {
-      case 'ArrowLeft':
-      case 'PageDown':
-      case 'ArrowDown':
-        ev.preventDefault(); goTo(current + 1); break;
-      case 'ArrowRight':
-      case 'PageUp':
-      case 'ArrowUp':
-        ev.preventDefault(); goTo(current - 1); break;
-      case 'Home':
-        ev.preventDefault(); goTo(0); break;
-      case 'End':
-        ev.preventDefault(); goTo(slides.length - 1); break;
-      case ' ':
-      case 'Enter':
-        if (document.activeElement === document.body) { ev.preventDefault(); goTo(current + 1); }
-        break;
+  /* Escape key */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
     }
   });
 
-  /* ---------------- Init ---------------- */
-  function init() {
-    const hash = window.location.hash;
-    let start = 0;
-    if (hash) {
-      const target = document.querySelector(hash);
-      const i = slides.indexOf(target);
-      if (i !== -1) start = i;
-    }
-    setActive(start);
-    if (start > 0) {
-      slides[start].scrollIntoView({ behavior: 'auto', block: 'start' });
-    }
-  }
+  /* ── Init ─────────────────────────────────────────────────────── */
+  goTo(0);
 
-  init();
 })();
