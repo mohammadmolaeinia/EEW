@@ -183,11 +183,11 @@ button {
   border-inline-start: 1px solid var(--border);
   overflow-y: auto;
   padding: 18px 0 40px;
-transform 0.28s var(--ease);
+  z-index: 150;
+  transition: transform 0.28s var(--ease);
 }
 
 .sidebar__heading {
-  maidebar__heading {
   margin: 0 18px 12px;
   font-size: 0.78rem;
   font-weight: 700;
@@ -288,20 +288,18 @@ transform 0.28s var(--ease);
   margin-bottom: 22px;
   border-radius: 999px;
   background: var(--border);
-  ot-weight: 600;
+  overflow: hidden;
 }
 
-.breadcrumb__sep {
-  opacity: 0.5;
-}
-
-/* ---------- 8. Progress ---------- */
-.progress {
-  height: 6px;
-  margin-bottom: 22px;
+.progress__bar {
+  height: 100%;
+  width: 0;
   border-radius: 999px;
-  background: var(--border);
-  o/
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  transition: width 0.3s var(--ease);
+}
+/* ---------- 8. Progress ---------- */
+
 .slide {
   display: none;
   background: var(--surface);
