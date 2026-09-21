@@ -26,64 +26,93 @@
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
-
 <body>
 
-<!-- ============ هدر ============ -->
+<!-- ======================= HEADER / BREADCRUMB ======================= -->
 <header class="topbar">
-  <button class="menu-toggle" id="menuToggle" aria-label="نمایش فهرست" aria-expanded="false">
+  <button id="sidebarToggle" class="icon-btn" aria-label="نمایش فهرست" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
-  <div class="topbar-titles">
-    <h1 class="pres-title">Benefits and Costs of Earthquake Early Warning</h1>
-    <nav class="breadcrumb" aria-label="مسیر">
-      <span class="crumb crumb-root">ارائه پایان‌نامه</span>
-      <span class="crumb-sep" aria-hidden="true">›</span>
-      <span class="crumb crumb-current" id="crumbCurrent">—</span>
-    </nav>
-  </div>
+  <nav class="breadcrumb" aria-label="مسیر">
+    <ol>
+      <li><span class="crumb-root">ارائه پایان‌نامه</span></li>
+      <li aria-hidden="true" class="sep">/</li>
+      <li><span class="crumb-mid">Benefits and Costs of Earthquake Early Warning</span></li>
+      <li aria-hidden="true" class="sep">/</li>
+      <li><span class="crumb-current" id="crumbCurrent">اهداف</span></li>
+    </ol>
+  </nav>
 
   <div class="presenter">
-    <span class="presenter-name">محمد مولائی‌نیا</span>
-    <span class="presenter-meta">کارشناسی ارشد مهندسی زلزله — پژوهشگاه بین‌المللی زلزله (IIEES)</span>
+    <strong>محمد مولائی‌نیا</strong>
+    <small>کارشناسی ارشد مهندسی زلزله — پژوهشگاه بین‌المللی زلزله (IIEES)</small>
   </div>
 </header>
 
 <div class="layout">
 
-  <!-- ============ سایدبار ============ -->
+  <!-- ======================= SIDEBAR ======================= -->
   <aside class="sidebar" id="sidebar" aria-label="فهرست اسلایدها">
     <div class="sidebar-head">فهرست مطالب</div>
-    <ol class="toc" id="toc"></ol>
+    <nav>
+      <ol class="toc" id="toc">
+        <li><a href="#slide-1"  data-index="0">اهداف</a></li>
+        <li><a href="#slide-2"  data-index="1">EEW چیست؟</a></li>
+        <li><a href="#slide-3"  data-index="2">EEW در جهان</a></li>
+        <li><a href="#slide-4"  data-index="3">منافع در جهت کاهش خطر</a></li>
+        <li><a href="#slide-5"  data-index="4">هزینه‌ها و منافع</a></li>
+        <li><a href="#slide-6"  data-index="5">اهداف و رویکرد مطالعه</a></li>
+        <li><a href="#slide-7"  data-index="6">ارزش اجتماعی گسترده‌</a></li>
+        <li><a href="#slide-8"  data-index="7">کاربردها و مزایای بالقوه</a></li>
+        <li><a href="#slide-9"  data-index="8">کاربردهای بالقوه</a></li>
+        <li><a href="#slide-10" data-index="9">مزایای بالقوه ناشی از کاربردها</a></li>
+        <li><a href="#slide-11" data-index="10">توانمندی و تمایل</a></li>
+        <li><a href="#slide-12" data-index="11">حساسیت‌ها و عوامل مؤثر</a></li>
+        <li><a href="#slide-13" data-index="12">وابستگی متقابل بخش‌ها</a></li>
+        <li><a href="#slide-14" data-index="13">سایر یافته‌ها</a></li>
+        <li><a href="#slide-15" data-index="14">مسائل و چالش‌های بالقوه</a></li>
+      </ol>
+    </nav>
   </aside>
 
   <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
 
-  <!-- ============ محتوای اسلایدها ============ -->
+  <!-- ======================= SLIDES ======================= -->
   <main class="stage" id="stage">
 
-    <!-- اسلاید ۱ -->
-    <section class="slide" data-title="اهداف" data-nav="اهداف">
-      <h2 class="slide-title">اهداف و روش مطالعاتی دو مطالعه</h2>
-      <p class="lead">دو مطالعه اهداف و روش مطالعاتی متفاوتی داشتند.</p>
+    <!-- ---------- Slide 1 ---------- -->
+    <section class="slide" id="slide-1" dataوه</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+
+  <!-- ======================= SLIDES ======================= -->
+  <main class="stage" id="stage">
+
+    <!-- ---------- Slide 1 ---------- -->
+    <section class="slide" id="slide-1" data/p>
       <ul class="bullets">
         <li>مطالعه مروری <em>Benefits and Costs of Earthquake Early Warning</em>: آشنایی افراد خارج از محدوده مهندسی زلزله با EEW</li>
-        <li>مصاحبه نیمه‌ساختاریافته <em>California Earthquake Early Warning System Benefit Study</em>: بسترسازی برای مطالعات کمی هزینه–فایده.</li>
+        <li>مصاحبه نیمه‌ساختاریافته <em>California Earthquake Early Warning System Benefit Study</em>: بسترسازی برای مطالعات کمّی هزینه–فایده.</li>
       </ul>
+      <footer class="slide-foot"><span>۱ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۲ -->
-    <section class="slide" data-title="EEW چیست؟" data-nav="EEW چیست؟">
+    <!-- ---------- Slide 2 ---------- -->
+    <section class="slide" id="slide-2" data-title="EEW چیست؟">
       <h2 class="slide-title">EEW چیست؟</h2>
       <p class="lead">
-        در اصل، EEW از لرزه‌سنج‌ها برای تشخیص اولین نشانه زلزله (موج P، کمان زرد رنگ)، پردازش اطلاعات شکل موج،
-        و پیش‌بینی شدت لرزشی که پس از موج S (کمان قرمز رنگ) فرا می‌رسد، استفاده می‌کند.
+        در اصل، EEW از لرزه‌سنج‌ها برای تشخیص اولین نشانه زلزله (موج P، کمان زردرنگ)،
+        پردازش اطلاعات شکل موج، و پیش‌بینی شدت لرزشی که پس از موج S (کمان قرمزرنگ) فرا می‌رسد، استفاده می‌کند.
       </p>
+      <footer class="slide-foot"><span>۲ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۳ -->
-    <section class="slide" data-title="EEW در جهان" data-nav="EEW در جهان">
+    <!-- ---------- Slide 3 ---------- -->
+    <section class="slide" id="slide-3" data-title="EEW در جهان">
       <h2 class="slide-title">EEW در جهان</h2>
       <div class="chips">
         <span class="chip">ساحل غربی آمریکا</span>
@@ -94,13 +123,14 @@
         <span class="chip">تایوان</span>
         <span class="chip">اسرائیل</span>
       </div>
+      <footer class="slide-foot"><span>۳ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۴ -->
-    <section class="slide" data-title="منافع در جهت کاهش خطر" data-nav="منافع در جهت کاهش خطر">
+    <!-- ---------- Slide 4 ---------- -->
+    <section class="slide" id="slide-4" data-title="منافع در جهت کاهش خطر">
       <h2 class="slide-title">منافع در جهت کاهش خطر</h2>
-      <ul class="bullets cols-2">
-        <li>DCH سالمندان و معلولین</li>
+      <ul class="bullets two-col">
+        <li>DCH سالمندان، معلولین</li>
         <li>مقامات مدیریت بحران</li>
         <li>بیمارستان‌ها</li>
         <li>مدارس</li>
@@ -110,81 +140,77 @@
         <li>شهرداری‌ها، شریان‌های حیاتی و سدها</li>
         <li>سیستم‌های حمل‌ونقل (فرودگاه، قطار و جاده‌ای)</li>
       </ul>
+      <footer class="slide-foot"><span>۴ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۵ -->
-    <section class="slide" data-title="هزینه‌ها و منافع" data-nav="هزینه‌ها و منافع">
+    <!-- ---------- Slide 5 ---------- -->
+    <section class="slide" id="slide-5" data-title="هزینه‌ها و منافع">
       <h2 class="slide-title">هزینه‌ها و منافع</h2>
       <p class="lead">هزینه‌ها و منافع به شکل زیر می‌باشد:</p>
-      <ul class="bullets facts">
-        <li><span class="fact-label">هزینه راه‌اندازی و اتوماسیمی‌باشد:</p>
-      <ul class="bullets facts">
-        <li><span class="fact-label">هزینه راه‌اندازی و اتوماسیون</span><span class="ass="fact-label">منفعت مالی در صنایع خصوصی (کارخانه OKI)</span><span class="fact-value">7.7 میلیون دلار</span></li>
-        <li><span class="fact-label">منفعت مالی در راه‌آهن (خروج یک قطار)</span><span class="fact-value">33 میلیون دلار</span></li>
-        <li><span class="fact-label">منفعت مالی عدم آسیب از 0.25 درصد آتش‌سوزی</span><span class="fact-value">31.25 میلیون دلار</span></li>
+      <ul class="bullets">
+        <li><span class="tag cost">هزینه</span> راه‌اندازی و اتوماسیون — <b>۱۶٫۱ میلیون دلار</b></li>
+        <li><span class="tag benefit">منفعت</span> نجات جان سه نفر — <b>۶٫۶ میلیون دلار</b></li>
+        <li><span class="tag benefit">منفعت</span> صنایع خصوصی (کارخانه OKI) — <b>۷٫۷ میلیون دلار</b></li>
+        <li><span class="tag benefit">منفعت</span> راه‌آهن (خروج یک قطار) — <b>۳۳ میلیون دلار</b></li>
+        <li><span class="tag benefit">منفعت</span> عدم آسیب از ۰٫۲۵ درصد آتش‌سوزی — <b>۳۱٫۲۵ میلیون دلار</b></li>
       </ul>
+      <footer class="slide-foot"><span>۵ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۶ -->
-    <section class="slide" data-title="اهداف و رویکرد مطالعه" data-nav="اهداف و رویکرد مطالعه">
+    <!-- ---------- Slide 6 ---------- -->
+    <section class="slide" id="slide-6" data-title="اهداف و رویکرد مطالعه">
       <h2 class="slide-title">اهداف و رویکرد مطالعه</h2>
-      <div class="modal-buttons">
-        <button class="pop-btn" data-modal-title="اهداف"
-          data-modal-body="1- ارزیابی کیفی ارزش یک EEWS ایالتی برای بخش‌های کلیدی زیرساختی و جامعه تجاری &#10; 2- ارائه اطلاعات در مورد ارزش بالقوه یک EEWS ایالتی در قالبی که بتوان متعاقباً از آن برای تدوین یک «تحلیل هزینه-فایده مقدماتی» و توسعه یک «تحلیل هزینه-فایده جامع‌تر» استفاده کرد">
+      <div class="popup-row">
+        <button class="popup-btn" data-modal-title="اهداف" data-modal-body="1- ارزیابی کیفی ارزش یک EEWS ایالتی برای بخش‌های کلیدی زیرساختی و جامعه تجاری||2- ارائه اطلاعات در مورد ارزش بالقوه یک EEWS ایالتی در قالبی که بتوان متعاقباً از آن برای تدوین یک «تحلیل هزینه-فایده مقدماتی» و توسعه یک «تحلیل هزینه-فایده جامع‌تر» استفاده کرد">
           اهداف
         </button>
-        <button class="pop-btn" data-modal-title="معیار گزینش"
-          data-modal-body="1- اندازه سازمان و میزان پیچیدگی (تخصص) &#10; 2- اهمیت سازمان در تاب‌آوری زیرساخت‌ها و اقتصاد &#10; 3- ارزش اجتماعی و ایمنیِ جانیِ ناشی از تصمیمات و اقدامات احتمالی سازمان در زمان هشدار زلزله">
+        <button class="popup-btn" data-modal-title="معیار گزینش" data-modal-body="1- اندازه سازمان و میزان پیچیدگی (تخصص)||2- اهمیت سازمان در تاب‌آوری زیرساخت‌ها و اقتصاد||3- ارزش اجتماعی و ایمنیِ جانیِ ناشی از تصمیمات و اقدامات احتمالی سازمان در زمان هشدار زلزله">
           معیار گزینش
         </button>
-        <button class="pop-btn" data-modal-title="سازمان‌ها"
-          data-modal-body="خدمات برق &#10; مخابرات &#10; حمل‌ونقل عمومی ریلی (Mass Transit) &#10; ترابری &#10; خدمات گاز &#10; خدمات آب &#10; ایمنی عمومی &#10; بیمارستان و خدمات پزشکی اضطراری &#10; آموزش &#10; کسب‌وکار &#10; تجاری/صنعتی &#10; بیمه &#10; مالی &#10; فناوری اطلاعات">
+        <button class="popup-btn" data-modal-title="سازمان‌ها" data-modal-body="خدمات برق||مخابرات||حمل‌ونقل عمومی ریلی (Mass Transit)||ترابری||خدمات گاز||خدمات آب||ایمنی عمومی||بیمارستان و خدمات پزشکی اضطراری||آموزش||کسب‌وکار||تجاری/صنعتی||بیمه||مالی||فناوری اطلاعات">
           سازمان‌ها
         </button>
       </div>
+      <footer class="slide-foot"><span>۶ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۷ -->
-    <section class="slide" data-title="ارزش اجتماعی گسترده" data-nav="ارزش اجتماعی گسترده">
+    <!-- ---------- Slide 7 ---------- -->
+    <section class="slide" id="slide-7" data-title="ارزش اجتماعی گسترده‌">
       <h2 class="slide-title">ارزش اجتماعی گسترده‌تر برای سامانه هشدار سریع زلزله (EEWS)</h2>
       <p class="lead">
         دو جنبه از ارزش اجتماعی گسترده‌تر یک سامانه هشدار سریع زلزله ایالتی:
-        ۱- دسترسی عمومی جامعه به این سامانه و ۲- ارزش افزوده اجتماعی حاصل از کاربردهای این سامانه در بخش‌های مختلف زیرساختی و صنعتی.
+        ۱- دسترسی عمومی جامعه به این سامانه و ۲- ارزش افزوده اجتماعی حاصل از کاربردهای این سامانه
+        در بخش‌های مختلف زیرساختی و صنعتی
       </p>
-      <div class="modal-buttons">
-        <button class="pop-btn" data-modal-title="دسترسی عمومی"
-          data-modal-body="منافع اجتماعی کلان را بسیار بالا ارزیابی کردند. حتی دریافت چند ثانیه تا چند ده ثانیه زمان می‌تواند به هزاران و چه بسا میلیون‌ها نفر کمک کند. حتی نفسِ تلاش اثرات آموزشی عمیقی دارد و جامعه را به لحاظ روانی برای وقوع زلزله آماده‌تر می‌سازد.">
+      <div class="popup-row">
+        <button class="popup-btn" data-modal-title="دسترسی عمومی" data-modal-body="منافع اجتماعی کلان را بسیار بالا ارزیابی کردند. حتی دریافت چند ثانیه تا چند ده ثانیه زمان می‌تواند به هزاران و چه بسا میلیون‌ها نفر کمک کند. حتی نفسِ تلاش اثرات آموزشی عمیقی دارد و جامعه را به لحاظ روانی برای وقوع زلزله آماده‌تر می‌سازد.">
           دسترسی عمومی
         </button>
-        <button class="pop-btn" data-modal-title="ارزش افزوده اجتماعی"
-          data-modal-body="یک سامانه هشدار سریع با کاهش نرخ تلفات، ایفای نقش به عنوان داده اولیه فنی در پایش وضعیت و توانمندسازی سازمان‌ها در اجرای واکنش‌های هدفمند در فاز پاسخ مزایای بسیاری دارد.">
-          ارزش افزوده اجتماعی
-        </button>
-      </div>
+        <button class="popup-btn" data-modal-title="ارزش افزوده اجتماعی" data-modal-body="یک سامانه هشدار سریع با کاهش نرخ تلفات، ایفای نقش به عنوان داده اولیه فنی در پایش وضعیت و توانمندسازی سازمان‌ها در اجرای واکنه اولیه فنی در پایش وضعیت و توانمندسازی سازمان‌ها در اجرای واکنش‌های هدفمند></footer>
     </section>
 
-    <!-- اسلاید ۸ -->
-    <section class="slide" data-title="کاربردها و مزایای بالقوه" data-nav="کاربردها و مزایای بالقوه">
+    <!-- ---------- Slide 8 ---------- -->
+    <section class="slide" id="slide-8" data-title="کاربردها و مزایای بالقوه">
       <h2 class="slide-title">کاربردها و مزایای بالقوه یک سامانه هشدار سریع زلزله (EEWS)</h2>
       <p class="lead">دو دسته از کاربردهای بالقوه:</p>
       <ul class="bullets">
         <li>متکی بر تصمیم‌گیری‌ها و اقدامات تحت کنترل عامل انسانی</li>
         <li>با قابلیت اتوماسیون و خودکارسازی</li>
       </ul>
+      <footer class="slide-foot"><span>۸ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۹ -->
-    <section class="slide" data-title="کاربردهای بالقوه" data-nav="کاربردهای بالقوه">
+    <!-- ---------- Slide 9 ---------- -->
+    <section class="slide" id="slide-9" data-title="کاربردهای بالقوه">
       <h2 class="slide-title">کاربردهای بالقوه</h2>
-      <ul class="bullets cols-2 tight">
+      <ul class="bullets two-col">
         <li>اطلاع‌رسانی جهت ایمنی شغلی</li>
         <li>اطلاع‌رسانی جهت ایمنی عمومی در یک تأسیسات خاص</li>
         <li>پخش همگانی پیام هشدار جهت ایمنی عموم مردم</li>
-        <lعمومی در یک تأسیسات خاص</li>
-        <li>پخش همگانی پیام هشدار جهت ایمنی عموم مردم</li>
-        <lراری و ارزیابی وضعیت</li>
+        <li>فعال‌سازی برنامه‌های پاسخ اضطراری و ارزیابی وضعیت</li>
         <li>کنترل شریان‌های حیاتی و تأسیسات زیربنایی در مقیاس وسیع</li>
-  انبوه‌بر پرسرعت</li>
+        <li>کنترل تأسیسات در محل / درون‌سایتی</li>
+        <li>کنترل ناوگان حمل‌ونقل انبوه‌بر پرسرعت</li>
         <li>کنترل ناوگان حمل‌ونقل انبوه‌بر کم‌سرعت</li>
         <li>کنترل وسایل نقلیه مستقل / انفرادی</li>
         <li>کنترل تجهیزات، دارایی‌ها و فرآیندهای صنعتی</li>
@@ -193,18 +219,18 @@
         <li>کنترل دسترسی در مقیاس وسیع</li>
         <li>کنترل دسترسی در محل / درون‌سایتی</li>
       </ul>
-      <div class="modal-buttons">
-        <button class="pop-btn" data-modal-title="مهم‌ترین کاربرد"
-          data-modal-body="ایمنی کارکنان (Occupational Safety) و فعال‌سازی طرح‌های مدیریت بحران (EOPs)">
+      <div class="popup-row">
+        <button class="popup-btn" data-modal-title="مهم‌ترین کاربرد" data-modal-body="ایمنی کارکنان (Occupational Safety) و فعال‌سازی طرح‌های مدیریت بحران (EOPs)">
           مهم‌ترین کاربرد
         </button>
       </div>
+      <footer class="slide-foot"><span>۹ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۱۰ -->
-    <section class="slide" data-title="مزایای بالقوه ناشی از کاربردها" data-nav="مزایای بالقوه ناشی از کاربردها">
+    <!-- ---------- Slide 10 ---------- -->
+    <section class="slide" id="slide-10" data-title="مزایای بالقوه ناشی از کاربردها">
       <h2 class="slide-title">مزایای بالقوه ناشی از کاربردها</h2>
-      <ul class="bullets cols-2">
+      <ul class="bullets two-col">
         <li>ایمنی عمومی</li>
         <li>ایمنی کارکنان</li>
         <li>حفاظت از اموال و دارایی‌ها</li>
@@ -213,116 +239,119 @@
         <li>حفاظت از درآمد و جلوگیری از زیان مالی</li>
       </ul>
       <p class="note">
-        «حفظ ایمنی جانی» و «حفاظت از اموال، دارایی‌ها، تجهیزات و عملیات»، مزیت اولیه‌اند و ازسرگیری سریع،
-        تداوم کسب‌وکار و صیانت از درآمد و کاهش خسارت مالی، مزایای ثانویه هستند.
+        «حفظ ایمنی جانی» و «حفاظت از اموال، دارایی‌ها، تجهیزات و عملیات» مزیت اولیه، و
+        ازسرگیری سریع، تداوم کسب‌وکار و صیانت از درآمد و کاهش خسارت مالی، ثانویه هستند.
       </p>
+      <footer class="slide-foot"><span>۱۰ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۱۱ -->
-    <section class="slide" data-title="توانمندی و تمایل برای کنترل انسانی در برابر کاربردهای خودکار" data-nav="توانمندی و تمایل">
-      <h2 class="slide-title">توانمندی و تمایل برای کنترل انسانی در برابر کاربردهای خودکار</h2>
-      <p class="lead">
-        امکان‌پذیری عمدتاً به توانمندی‌های فنی جهت پیاده‌سازی یک کاربرد مشخص مربوط است و تمایل بیشتر به
-        توانایی‌های سازمانی و مسائل خط‌مشی/سیاست‌گذاری در خصوص اجرای آن کاربرد بازمی‌گردد.
+    <!-- ---------- Slide 11 ---------- -->
+    <section class="slide" id="slide-11" data-title="توانمندی و تمایل برای کنترل انسانی در برابر کاربردهای خودکار">
+      <h2 class="slide-title">توانمندی و تمایل برای کنترل انسانی در بر- -->
+    <section class="slide" id="slide-11" data-title="توانمندی و تمایل برای کنترل انسانی در برابر کاربردهای خودکار">
+      <h2 class="slide-title">توانمندی و تمایل برای کنترل انسانی در بر است و
+        تمایل بیشتر به توانایی‌های سازمانی و مسائل خط‌مشی/سیاست‌گذاری در خصوص اجرای آن کاربرد بازمی‌گردد.
       </p>
       <ul class="bullets">
-        <li>
-          تمایل قوی و بینابینی (مختلط) به خودکارسازی ناشی از نگرانی‌های مربوط به زمان تأخیر در فرآیند انتقال سامانه
-          و در فرآیند واکنش رفتاری انسانی می‌باشد.
-        </li>
-  نگرانی‌های مربوط به زمان تأخیر در فرآیند انتقال سامانه
-          و در فرآیند واکنش رفتاری انسانی می‌باشد.
-        </li>
-        <li>
-          در مقابل، تمایل ضعیف به خودکارسااشتباه به‌صورت
-          خودکار بیش از حد بالاست و نگرش‌ها در برابر خطاهای ناشی از اقدام نسبت به خطاهای ناشی از عدم اقدام نامتقارن
-          بوده و به مراتب منفی‌تر است.
-        </li>
+        <li>تمایل قوی و بینابینی (مختلط) به خودکارسازی ناشی از نگرانی‌های مربوط به زمان تأخیر در فرآیند انتقال سامانه و در فرآیند واکنش رفتاری انسانی می‌باشد.</li>
+        <li>در مقابل، تمایل ضعیف به خودکارسازی ناشی از این است که مسئولیت حقوقی و مدنیِ اتخاذ یک اقدام اشتباه به‌صورت خودکار بیش از حد بالاست و نگرش‌ها در برابر خطاهای ناشی از اقدام نسبت به خطاهای ناشی از عدم اقدام نامتقارن بوده و به مراتب منفی‌تر است.</li>
       </ul>
+      <footer class="slide-foot"><span>۱۱ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۱۲ -->
-    <section class="slide" data-title="حساسیت‌ها و عوامل مؤثر" data-nav="حساسیت‌ها و عوامل مؤثر">
+    <!-- ---------- Slide 12 ---------- -->
+    <section class="slide" id="slide-12" data-title="حساسیت‌ها و عوامل مؤثر">
       <h2 class="slide-title">حساسیت‌های کلیدی سیستم و مسائل سازمانی مؤثر بر توانمندی و تمایل بالقوه جهت استفاده</h2>
       <p class="lead">
-        در صورتی که بر حساسیت‌های سیستم و موانع بالقوه سازمانی غلبه شود، پتانسیل سازمان‌های مختلف برای
-        اعمال تغییرات عملیاتی افزایش می‌یابد.
+        در صورتی که بر حساسیت‌های سیستم و موانع بالقوه سازمانی غلبه شود،
+        پتانسیل سازمان‌های مختلف برای اعمال تغییرات عملیاتی افزایش می‌یابد.
       </p>
-      <div class="modal-buttons">
-        <button class="pop-btn" data-modal-title="حساسیت‌های سیستم"
-          data-modal-body="قابلیت اطمینان سیستم و اعتماد &#10; آستانه‌های اعلان هشدار متفاوت &#10; مدت‌زمان پیش‌هشدار متفاوت">
+      <div class="popup-row">
+        <button class="popup-btn" data-modal-title="حساسیت‌های سیستم" data-modal-body="قابلیت اطمینان سیستم و اعتماد||آستانه‌های اعلان هشدار متفاوت||مدت‌زمان پیش‌هشدار متفاوت">
           حساسیت‌های سیستم
         </button>
-        <button class="pop-btn" data-modal-title="موانع سازمانی، پیچیدگی‌ها و مسائل اجرایی"
-          data-modal-body="طراحی و توسعه تجهیزات و مکانیزم‌های انتقال پیام &#10وانع سازمانی، پیچیدگی‌ها و مسائل اجرایی"
-          data-modal-body="طراحی و توسعه تجهیزات و مکانیزم‌های انتقال پیام &#10ای پرسنلی و منابع انسانی &#10; مشکل رهبری، پشتیبانی سازمانی، هماهنگی بین‌بخشی و مقاومت سازمانی &#10; سرمایه‌گذاری در آموزش‌های داخلی، ارتقای آگاهی و ارتباطات &#10; هزینه‌های سازمانی، استقرار، آموزش و چالش‌های تأمین مالی &#10; الزامات تغییر در قوانین و چارچوب‌های دستورالعمل">
+        <button class="popup-btn" data-modal-title="موانع سازمانی، پیچیدگی‌ها و مسائل اجرایی" data-modal-body="طراحی و توسعه تجهیزات و مکانیزم‌های انتقال پیام||امنیت سایبری، فایروال و چالش‌های نرم‌افزاری||محدودیت‌های پرسنلی و منابع انسانی||مشکل رهبری، پشتیبانی سازمانی، هماهنگی بین‌بخشی و مقاومت سازمانی||سرمایه‌گذاری در آموزش‌های داخلی، ارتقای آگاهی و ارتباطات||هزینه‌های سازمانی، استقرار، آموزش و چالش‌های تأمین مالی||الزامات تغییر در قوانین و چارچوب‌های دستورالعمل">
           موانع سازمانی، پیچیدگی‌ها و مسائل اجرایی
         </button>
       </div>
+      <footer class="slide-foot"><span>۱۲ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۱۳ -->
-    <section class="slide" data-title="وابستگی متقابل بخش‌ها" data-nav="وابستگی متقابل بخش‌ها">
+    <!-- ---------- Slide 13 ---------- -->
+    <section class="slide" id="slide-13" data-title="وابستگی متقابل بخش‌ها">
       <h2 class="slide-title">وابستگی متقابل بخش‌ها</h2>
       <p class="lead">این وابستگی‌ها را در سه رده (Tier) طبقه‌بندی می‌کند:</p>
-      <ul class="bullets tiers">
-        <li><span class="tier-tag">رده اول</span> برق، مخابرات و فناوری اطلاعات</li>
-        <li><span class="tier-tag">رده دوم</span> حمل‌ونقل، تأسan> برق، مخابرات و فناوری اطلاعات</li>
-        <li><span class="tier-tag">رده دوم</span> حمل‌ونقل، تأسیسات گاز، تأسیسات آب، ایمنی عمومی و سیستم‌های مالی</li>
-        <li><span classشکی، آموزش، بیمه، و بخش‌های تجاری/صنعتی</li>
-      </ul>
+      <div class="tiers">
+        <div class="tier">
+          <h3>رده اول</h3>
+          <p>برق، مخابرات و فناوری اطلاعات</p>
+        </div>
+        <div class="tier">
+          <h3>رده دوم</h3>
+          <p>حمل‌ونقل، تأسیسات گاز، تأسیسات آب، ایمنی عمومی و سیستم‌های مالی</p>
+        </div>
+        <div class="tier">
+          <h3>رده سوم</h3>
+          <p>حمل‌ونقل انبوه، بیمارستان‌ها، اورژانس پزشکی، آموزش، بیمه، و بخش‌های تجاری/صنعتی</p>
+        </div>
+      </div>
+      <footer class="slide-foot"><span>۱۳ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۱۴ -->
-    <section class="slide" data-title="سایر یافته‌ها" data-nav="سایر یافته‌ها">
+    <!-- ---------- Slide 14 ---------- -->
+    <section class="slide" id="slide-14" data-title="سایر یافته‌ها">
       <h2 class="slide-title">سایر یافته‌های ویژه به تفکیک بخش‌ها</h2>
       <ul class="bullets">
         <li>آمادگی پایه در برابر زلزله و برنامه‌ریزی پاسخ</li>
         <li>اهداف و اولویت‌های برنامه‌ریزی پاسخ</li>
         <li>سطح بلوغ برنامه‌ریزی واکنش جامع و فرهنگ سازمانی</li>
         <li>فعالیت‌های واکنشی در ثانیه‌ها، دقیقه‌ها و ساعت‌های پس از تشخیص جنبش زمین</li>
-        <li>کاربرد فعلی و تجربیات کار با سامانه‌های هشدار و سایر موارد</li>
+        <li>کاربرد فعلی و تجربیات کار با سامانه‌های هشدار و سایر</li>
       </ul>
+      <footer class="slide-foot"><span>۱۴ / ۱۵</span></footer>
     </section>
 
-    <!-- اسلاید ۱۵ -->
-    <section class="slide" data-title="مسائل و چالش‌های بالقوه" data-nav="مسائل و چالش‌های بالقوه">
+    <!-- ---------- Slide 15 ---------- -->
+    <section class="slide" id="slide-15" data-title="مسائل و چالش‌های بالقوه">
       <h2 class="slide-title">مسائل و چالش‌های بالقوه</h2>
-      <div class="modal-buttons">
-        <button class="pop-btn" data-modal-title="ملاحظات طراحی و عملکرد سامانه"
-          data-modal-body="مدل برنامه‌ریزی و پیاده‌سازی یک (EEWS) باید مبتنی بر همکاری عمیق و گسترده باشد &#10; تاب‌آوری، افزونگی یا تکرارپذیری و مقیاس‌پذیری سیستم، از مؤلفه‌های کلیدی هستند &#10; تا زمانی که استانداردهای عملکردی سیستم به روشنی درک نشوند، سازمان‌ها نمی‌توانند تمایل خود را به‌طور کامل ارزیابی کنند">
+      <div class="popup-row">
+        <button class="popup-btn" data-modal-title="ملاحظات طراحی و عملکرد سامانه" data-modal-body="مدل برنامه‌ریزی و پیاده‌سازی یک (EEWS) باید مبتنی بر همکاری عمیق و گسترده باشد||تاب‌آوری، افزونگی یا تکرارپذیری و مقیاد مبتنی بر همکاری عمیق و گسترده باشد||تاب‌آوری، افزونگی یا تکرارپذیری و مقیاستم به روشنی درک نشوند، سازمان‌ها نمی‌توانند تمایل خود را به‌طور کامل ارزیابی کنند">
           ملاحظات طراحی و عملکرد سامانه
         </button>
-        <button class="pop-btn" data-modal-title="ساختار حاکمیت و مدیریت سامانه"
-          data-modal-body="توسعه، مدیریت و بهره‌برداری از یک سامانه باید به عنوان یک «پروژه کلان زیرساخت ایمنی عمومی» دیده شود &#10; مسئله محافظت در برابر مسئولیت‌های حقوقی">
+        <button class="popup-btn" data-modal-title="ساختار حاکمیت و مدیریت سامانه" data-modal-body="توسعه، مدیریت و بهره‌برداری از یک سامانه باید به عنوان یک «پروژه کلان زیرساخت ایمنی عمومی» دیده شود||مسئله محافظت در برابر مسئولیت‌های حقوقی">
           ساختار حاکمیت و مدیریت سامانه
         </button>
-        <button class="pop-btn" data-modal-title="تأمین مالی سامانه"
-          data-modal-body="سامانه هشدار سریع زلزله یک «حق اجتماعی/استحقاق عمومی» است و مسئولیت ایجاد، توسعه و نگهداری آن بر عهده حاکمیت می‌باشد &#10; یک منبع تأمین مالی پایدار، ایمن و مستمر نیاز است &#10; شناسایی شیوه‌های مشارکت و منافع جانبی برای سازمان‌ها">
+        <button class="popup-btn" data-modal-title="تأمین مالی سامانه" data-modal-body="سامانه هشدار سریع زلزله یکبر مسئولیت‌های حقوقی">
+          ساختار حاکمیت و مدیریت سامانه
+        </button>
+        <button class="popup-btn" data-modal-title="تأمین مالی سامانه" data-modal-body="سامانه هشدار سریع زلزله یک «حق اجتماعی/استحقاق عمومن مالی پایدار، ایمن و مستمر نیاز است||شناسایی شیوه‌های مشارکت و منافع جانبی برای سازمان‌ها">
           تأمین مالی سامانه
         </button>
-        <button class="pop-btn" data-modal-title="برنامه‌های استقرار و عرضه سامانه"
-          data-modal-body="دسترسی عادلانه هم از سوی سازمان‌ها و هم از سوی کل جامعه &#10; جدول زمانیِ اجرا به‌صورت واقع‌بینانه لحاظ شود &#10; مطالعه طیف فعالیت‌های انسانی در موقعیت‌های خاص &#10; تضمین درک صحیح و آموزش کافی در استفاده از سامانه">
+        <button class="popup-btn" data-modal-title="برنامه‌های استقرار و عرضه سامانه" data-modal-body="دسترسی عادلانه هم از سوی سازمان‌ها و هم از سوی کل جامعه||جدول زمانیِ اجرا به‌صورت واقع‌بینانه لحاظ شود||مطالعه طیف فعالیت‌های انسانی در موقعیت‌های خاص||تضمین درک صحیح و آموزش کافی در استفاده از سامانه">
           برنامه‌های استقرار و عرضه سامانه
         </button>
-        <button class="pop-btn" data-modal-title="حفظ و تداوم مشارکت بخش‌ها و ذی‌نفعان"
-          data-modal-body="توسعه گروه کاربران نسخه بتا &#10; ایجاد مجمع یا پلتفرم ارتباطی مشترک &#10; مشارکت‌دادن سازمان‌ها در آموزش همگانی &#10; همکاری با سازمان‌ها جهت ادغام هشدار سریع">
-          حفظ و تداوم مشارکت بخش‌ها و ذی‌ت‌دادن سازمان‌ها در آموزش همگانی &#10; همکاری با سازمان‌ها جهت ادغام هشدار سریع">
+        <button class="popup-btn" data-modal-title="حفظ و تداوم مشارکت بخش‌ها و ذی‌نفعان" data-modal-body="توسعه گروه کاربران نسخه بتا||ایجاد مجمع یا پلتفرم ارتباطی مشترک||مشارکت‌دادن سازمان‌ها در آموزش همگانی||همکاری با سازمان‌ها جهت ادغام هشدار سریع">
           حفظ و تداوم مشارکت بخش‌ها و ذی‌نفعان
         </button>
- aria-label="اسلاید قبلی">قبلی ›</button>
-  <div class="progress-wrap" aria-hidden="true">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-  </div>
-  <span class="counter" id="counter">۱ / ۱۵</span>
-  <button class="nav-btn" id="nextBtn" aria-label="اسلاید بعدی">‹ بعدی</button>
-</footer>
+      </div>
+      <footer class="slide-foot"><span>۱۵ / ۱۵</span></footer>
+    </section>
 
-<!-- ============ پاپ‌آپ ============ -->
+  </main>
+</div>
+
+<!-- ======================= NAVIGATION ======================= -->
+<div class="navbar">
+  <button id="prevBtn" class="nav-btn" aria-label="اسلاید قبلی">قبلی ›</button>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+  <button id="nextBtn" class="nav-btn" aria-label="اسلاید بعدی">‹ بعدی</button>
+</div>
+
+<!-- ======================= MODAL ======================= -->
 <div class="modal-overlay" id="modalOverlay" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-header">
-      <h3 class="modal-title" id="modalTitle"></h3>
+    <div class="modal-head">
+      <h3 id="modalTitle"></h3>
       <button class="modal-close" id="modalClose" aria-label="بستن">&times;</button>
     </div>
     <div class="modal-body" id="modalBody"></div>
