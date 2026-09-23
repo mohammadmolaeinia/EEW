@@ -3,85 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>منافع و هزینه‌های سامانه هشدار سریع زلزله</title>
-<meta name="description" content="ارائه: Benefits and Costs of Earthquake Early Warning">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<title>فایده‌ها و هزینه‌های سامانه هشدار سریع زلزله</title>
+<meta name="description" content="ارائه: Benefits and Costs of EEW">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body class="is-cover">
 
 <!-- ===== Topbar ===== -->
 <header class="topbar">
-  <button class="menu-toggle" id="menuToggle" type="button"
-          aria-label="نمایش فهرست اسلایدها" aria-expanded="false" aria-controls="sidebar">☰</button>
-  <h1 class="topbar__title">منافع و هزینه‌های هشدار سریع زلزله</h1>
-  <span class="topbar__meta">پژوهشگاه بین‌المللی زلزله‌شناسی و مهندسی زلزله</span>
+  <h1 class="topbar__title">فایده‌ها و هزینه‌های سامانه هشدار سریع زلزله</h1>
+  <div class="topbar__institution">
+    <img class="topbar__logo" src="IIEES logo white transparent.png" alt="نشان پژوهشگاه بین‌المللی زلزله‌شناسی و مهندسی زلزله">
+    <span class="topbar__meta">پژوهشگاه بین‌المللی زلزله‌شناسی و مهندسی زلزله</span>
+  </div>
 </header>
 
-<div class="scrim" id="scrim" hidden></div>
+<nav class="presentation-nav" id="presentationNav" aria-label="مسیر ارائه" hidden>
+  <button class="presentation-nav__home" id="homeButton" type="button" aria-label="بازگشت به صفحه عنوان" title="صفحه عنوان">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.7a.5.5 0 0 1-.5.5h-5.2v-6.5H8.7V21H3.5a.5.5 0 0 1-.5-.5z"/></svg>
+  </button>
+  <div class="presentation-nav__scroller" id="presentationNavItems"></div>
+</nav>
 
 <div class="layout">
-
-  <!-- ===== Sidebar ===== -->
-  <aside class="sidebar" id="sidebar" aria-label="فهرست اسلایدها">
-    <p class="sidebar__heading">فهرست مطالب</p>
-    <nav class="sidebar__nav" id="sidebarNav"><!-- توسط script.js ساخته می‌شود --></nav>
-  </aside>
 
   <!-- ===== Main ===== -->
   <main class="main">
 
-    <nav class="breadcrumb" id="breadcrumb" aria-label="مسیر"></nav>
-
-    <div class="progress" role="progressbar" aria-label="پیشرفت ارائه"
-         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress">
-      <div class="progress__bar" id="progressBar"></div>
-    </div>
-
     <div id="slides">
 
       <!-- 1 -->
-      <section class="slide slide--cover is-active" id="s1"
-               data-nav="عنوان" data-crumb="آغاز">
-        <h2 class="slide__title">منافع و هزینه‌های سامانه هشدار سریع زلزله</h2>
-        <p class="slide__subtitle">Benefits and Costs of Earthquake Early Warning</p>
+      <section class="slide slide--cover is-active" id="s1" data-nav="عنوان" data-crumb="آغاز">
+        <div class="cover__institution">
+          <img class="cover__logo" src="IIEES logo black transparent.png" alt="نشان پژوهشگاه بین‌المللی زلزله‌شناسی و مهندسی زلزله">
+        </div>
+        <h2 class="slide__title">فایده‌ها و هزینه‌های سامانه هشدار سریع زلزله</h2>
+        <p class="slide__subtitle">Benefits and Costs of Earthquake Early Warning System</p>
         <div class="cover__meta">
-          <p><strong>ارائه‌دهنده:</strong> محمد مولائی‌نیا</p>
-          <p><strong>مقطع:</strong> کارشناسی ارشد مهندسی زلزله</p>
-          <p><strong>پژوهشگاه:</strong> بین‌المللی زلزله‌شناسی و مهندسی زلزله (IIEES)</p>
+          <p>ارائه‌دهنده:<strong> محمد مولایی‌نیا</strong></p>
+          <p>استاد راهنما:<strong> دکتر انوشیروان انصاری</strong></p>
+          <P>تابستان ۱۴۰۵</P>
+        </div>
+        <div class="cover__action">
+          <button class="info-btn start-btn" id="startPresentation" type="button">شروع</button>
         </div>
       </section>
 
+      <!-- مسیر ارائه -->
+      <section class="slide slide--agenda" id="agenda" data-nav="مسیر ارائه">
+        <h2 class="slide__title">مسیر ارائه</h2>
+        <div class="agenda__list" id="agendaList"></div>
+        <button class="presentation-nav__home agenda__home" id="agendaHomeButton" type="button" aria-label="بازگشت به صفحه عنوان" title="صفحه عنوان">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.7a.5.5 0 0 1-.5.5h-5.2v-6.5H8.7V21H3.5a.5.5 0 0 1-.5-.5z"/></svg>
+        </button>
+      </section>
+
       <!-- 2 -->
-      <section class="slide" id="s2" data-nav="اهداف" data-crumb="اهداف">
-        <span class="slide__kicker">اهداف</span>
-        <h2 class="slide__title">اهداف و روش مطالعاتی دو مطالعه</h2>
+      <section class="slide" id="s2" data-nav="مقایسه پژوهش ها" data-crumb="مقایسه دو پژوهش در باب هزینه-فایده EEW">
+        <span class="slide__kicker">بررسی اولیه</span>
+        <h2 class="slide__title">مقایسه پژوهش ها</h2>
         <div class="slide__body">
-          <p class="lead">دو مطالعه اهداف و روش مطالعاتی متفاوتی داشتند.</p>
+          <p class="lead">در مورد هزینه-فایده سیستم هشدار سریع زلزله</p>
           <div class="grid grid--2">
-            <div class="card">
-              <h3 class="card__title">مطالعه مروری</h3>
-              <p class="card__text"><em>Benefits and Costs of Earthquake Early Warning</em></p>
-              <p class="card__text">آشنایی افراد خارج از محدوده مهندسی زلزله با EEW.</p>
-            </div>
-            <div class="card">
-              <h3 class="card__title">مصاحبه نیمه‌ساختاریافته</h3>
-              <p class="card__text"><em>California Earthquake Early Warning System Benefit Study</em></p>
-              <p class="card__text">بسترسازی برای مطالعات کمی هزینه‌فایده.</p>
-            </div>
+            <a class="card card--link" href="https://www.researchgate.net/publication/301707251_Benefits_and_Costs_of_Earthquake_Early_Warning">
+              <h3 class="card__title">Benefits and Costs of Earthquake Early Warning. 2016 <em>Strauss, J.A.; Allen, R.M</em></h3>
+              <p class="card__text"><strong>نوع پژوهش: </strong>مقاله مروری با بررسی کمی هزینه-فایده</p>
+              <p class="card__text"><strong>هدف پژوهش: </strong>آشنایی افراد خارج از محدوده مهندسی زلزله با EEW.</p>
+            </a>
+            <a class="card card--link" href="https://peer.berkeley.edu/publications/2016-06">
+              <h3 class="card__title">California Earthquake Early Warning System Benefit Study. 2016 <em>PEER Report</em></h3>
+              <p class="card__text"><strong>نوع پژوهش: </strong>مصاحبه نیمه‌ساختاریافته با بررسی کیفی هزینه-فایده</p>
+              <p class="card__text"><strong>هدف پژوهش: </strong>بسترسازی برای مطالعات کمی هزینه‌فایده.</p>
+            </a>
           </div>
         </div>
       </section>
 
       <!-- 3 -->
-      <section class="slide" id="s3" data-nav="EEW چیست؟" data-crumb="EEW چیست؟">
+      <section class="slide" id="s3" data-nav="پژوهش اول" data-crumb="پژوهش اول">
+        <span class="slide__kicker">پژوهش اول</span>
+        <h2 class="slide__title">هدف و روش مطالعاتی Benefits and Costs of Earthquake Early Warning. 2016</h2>
+        <div class="slide__body">
+          <p class="lead"><strong>هدف: </strong>ارائه چشم‌انداز گسترده‌ای از امکاناتی که هشدار سریع در جهت کاهش خطر فراهم می‌کند به کاربران بالقوه سیستم‌های هشدار سریع، مقامات دولتیِ سیاست‌گذار و سایر افراد خارج از جامعه زلزله‌شناسی</p>
+          <p class="lead"><strong>روش مطالعاتی: </strong>مقاله مروری با بررسی کمی هزینه-فایده</p>
+        </div>
         <span class="slide__kicker">مبانی</span>
-        <h2 class="slide__title">EEW چیست؟</h2>
+        <h2 class="slide__title">سامانه هشدار سریع زلزله چیست؟</h2>
         <div class="slide__body">
           <p class="lead">
-            در اصل، EEW از لرزه‌سنج‌ها برای تشخیص اولین نشانه زلزله (موج P، کمان زردرنگ)،
-            پردازش اطلاعات شکل موج، و پیش‌بینی شدت لرزشی که پس از موج S (کمان قرمزرنگ) فرا می‌رسد، استفاده می‌کند.
+            سامانه هشدار سریع زلزله از لرزه‌سنج‌ها برای تشخیص اولین نشانه زلزله یعنی موج P،
+            پردازش اطلاعات شکل موج، و پیش‌بینی شدت لرزشی که پس از موج S فرا می‌رسد، استفاده می‌کند.
+            و سپس به افراد و زیرساخت‌های در معرض خطر هشدار میدهد. 
           </p>
           <div class="grid grid--3">
             <div class="card">
@@ -98,10 +111,6 @@
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- 4 -->
-      <section class="slide" id="s4" data-nav="EEW در جهان" data-crumb="EEW در جهان">
         <span class="slide__kicker">وضعیت جهانی</span>
         <h2 class="slide__title">EEW در جهان</h2>
         <div class="slide__body">
@@ -115,12 +124,8 @@
             <li>اسرائیل</li>
           </ul>
         </div>
-      </section>
-
-      <!-- 5 -->
-      <section class="slide" id="s5" data-nav="منافع در جهت کاهش خطر" data-crumb="منافع در جهت کاهش خطر">
-        <span class="slide__kicker">منافع</span>
-        <h2 class="slide__title">منافع در جهت کاهش خطر</h2>
+        <span class="slide__kicker">فواید</span>
+        <h2 class="slide__title">فایده‌ها در جهت کاهش خطر</h2>
         <div class="slide__body">
           <ul>
             <li>DCH سالمندان و معلولین</li>
@@ -134,72 +139,60 @@
             <li>سیستم‌های حمل‌ونقل (فرودگاه، قطار و جاده‌ای)</li>
           </ul>
         </div>
-      </section>
-
-      <!-- 6 -->
-      <section class="slide" id="s6" data-nav="هزینه‌ها و منافع" data-crumb="هزینه‌ها و منافع">
-  <span class="slide__kicker">اقتصاد</span>
-  <h2 class="slide__title">هزینه‌ها و منافع</h2>
-  <div class="slide__body">
-    <p class="lead">هزینه‌ها و منافع به شکل زیر می‌باشد:</p>
-    <div class="table-wrap">
-      <table>
-        <caption>مقایسه‌ی هزینه‌ی راه‌اندازی با منافع مالی برآوردشده</caption>
-        <thead>
-          <tr>
-            <th>ردیف</th>
-            <th>عنوان</th>
-            <th>نوع</th>
-            <th class="num">مقدار (میلیون دلار)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="num">۱</td><td>هزینه راه‌اندازی و اتوماسیون</td><td>هزینه</td><td class="num">۱۶٫۱</td></tr>
-          <tr><td class="num">۲</td><td>منفعت جان 3 نفر</td><td>منفعت</td><td class="num">6.6</td></tr>
-          <tr><td class="num">۳</td><td>منفعت مالی در صنایع خصوصی (کارخانه OKI)</td><td>منفعت</td><td class="num">۷٫۷</td></tr>
-          <tr><td class="num">۴</td><td>منفعت مالی در راه‌آهن (خروج یک قطار)</td><td>منفعت</td><td class="num">۳۳</td></tr>
-          <tr><td class="num">۵</td><td>منفعت مالی عدم آسیب از 0.25 درصد آتش سوزی </td><td>منفعت</td><td class="num">۳۱٫۲۵</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-      <!-- 7 -->
-      <section class="slide" id="s7" data-nav="اهداف و رویکرد مطالعه" data-crumb="اهداف و رویکرد مطالعه">
-        <span class="slide__kicker">مطالعه دوم</span>
-        <h2 class="slide__title">اهداف و رویکرد مطالعه</h2>
+        <span class="slide__kicker">اقتصاد</span>
+        <h2 class="slide__title">هزینه‌ها و فایده‌ها</h2>
         <div class="slide__body">
-          <div class="btn-row">
-            <button class="info-btn" type="button" data-modal="m-goals">اهداف</button>
-            <button class="info-btn" type="button" data-modal="m-criteria">معیار گزینش</button>
-            <button class="info-btn" type="button" data-modal="m-orgs">سازمان‌ها</button>
-          </div>
+          <p class="lead">هزینه‌های برآوردی و صرفه‌جویی‌های بالقوه، بر پایهٔ دامنه‌ای متنوع از سناریوها.</p>
+          <figure class="cost-benefit-chart" role="img" aria-label="نمودار دایره‌ای هزینهٔ بهره‌برداری و پنج فایدهٔ برآوردشده، به میلیون دلار.">
+            <div class="cost-benefit-chart__donut">
+              <div class="cost-benefit-chart__center">
+                <strong>هزینه‌ها و فایده‌ها</strong>
+                <span>میلیون دلار</span>
+              </div>
+            </div>
+            <figcaption>
+              <ul class="cost-benefit-chart__legend">
+                <li><i class="cost-benefit-chart__swatch cost-benefit-chart__swatch--cost"></i>هزینهٔ بهره‌برداری یک‌ساله از سامانه — ۱۶٫۱ میلیون دلار</li>
+                <li><i class="cost-benefit-chart__swatch cost-benefit-chart__swatch--benefit"></i>ارزش آماریِ جان یک نفر — ۶٫۶ میلیون دلار</li>
+                <li><i class="cost-benefit-chart__swatch cost-benefit-chart__swatch--benefit"></i>یک درصد از خسارت‌های زلزلهٔ نورتریج — ۱۹٫۸ میلیون دلار</li>
+                <li><i class="cost-benefit-chart__swatch cost-benefit-chart__swatch--benefit"></i>خسارت یک کارخانهٔ نیمه‌هادی — ۷٫۷ میلیون دلار</li>
+                <li><i class="cost-benefit-chart__swatch cost-benefit-chart__swatch--benefit"></i>ارزش یک قطار ده‌واگنه — ۳۳ میلیون دلار</li>
+                <li><i class="cost-benefit-chart__swatch cost-benefit-chart__swatch--benefit"></i>کاهش ۰٫۲۵ درصدیِ خسارت‌های ناشی از آتش‌سوزی — ۳۱٫۲۵ میلیون دلار</li>
+              </ul>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      <!-- 8 -->
-      <section class="slide" id="s8" data-nav="ارزش اجتماعی گسترده‌" data-crumb="ارزش اجتماعی گسترده‌">
+      <!-- 4 -->
+      <section class="slide" id="s4" data-nav="پژوهش دوم" data-crumb="پژوهش دوم">
+        <span class="slide__kicker">پژوهش دوم</span>
+        <h2 class="slide__title">اهداف و رویکرد مطالعه</h2>
+        <div class="slide__body">
+          <p class="lead">این پژوهش به عنوان یک مطالعه امکان‌سنجی اولیه با 
+            دو هدف به شکل مجموعه‌ای از مصاحبه‌های نیمه‌ساختاریافته انجام شده است.</p>
+          <div class="btn-row">
+            <button class="info-btn" type="button" data-modal="m-goals">اهداف</button>
+            <button class="info-btn" type="button" data-modal="m-criteria">معیار گزینش سازمان ها</button>
+            <button class="info-btn" type="button" data-modal="m-orgs">سازمان‌های مورد بررسی</button>
+          </div>
+        </div>
         <span class="slide__kicker">ارزش اجتماعی</span>
         <h2 class="slide__title">ارزش اجتماعی گسترده‌تر برای سامانه هشدار سریع زلزله (EEWS)</h2>
         <div class="slide__body">
           <p class="lead">
-            دو جنبه از ارزش اجتماعی گسترده‌تر یک سامانه هشدار سریع زلزله:
-            ۱) دسترسی عمومی جامعه به این سامانه و ۲) ارزش افزختی و صنعتی.
+            ارزش های اجتماعی گسترده‌ یک سامانه هشدار سریع زلزله دو جنبه دارند:
+            ۱- دسترسی عمومی جامعه به این سامانه و ۲- ارزش افزوده اجتماعی در بخش های زیرساختی و صنعتی.
           </p>
           <div class="btn-row">
             <button class="info-btn" type="button" data-modal="m-public">دسترسی عمومی</button>
             <button class="info-btn" type="button" data-modal="m-social">ارزش افزوده اجتماعی</button>
           </div>
         </div>
-      </section>
-
-      <!-- 9 -->
-      <section class="slide" id="s9" data-nav="کاربردها و مزایای بالقوه" data-crumb="کاربردها و مزایای بالقوه">
-        <span class="slide__kicker">کاربردها</span>
+        <span class="slide__kicker">کاربردها و مزایا</span>
         <h2 class="slide__title">کاربردها و مزایای بالقوه یک سامانه هشدار سریع زلزله (EEWS)</h2>
         <div class="slide__body">
-          <p class="lead">دو دسته از کاربردهای بالقوه:</p>
+          <p class="lead">می توان کاربردهای بالقوه را به دو دسته تقسیم کرد.</p>
           <div class="grid grid--2">
             <div class="card">
               <h3 class="card__title">دسته اول</h3>
@@ -210,133 +203,109 @@
               <p class="card__text">با قابلیت اتوماسیون و خودکارسازی.</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- 10 -->
-      <section class="slide" id="s10" data-nav="کاربردهای بالقوه" data-crumb="کاربردهای بالقوه">
-        <span class="slide__kicker">فهرست کاربردها</span>
-        <h2 class="slide__title">کاربردهای بالقوه</h2>
-        <div class="slide__body">
-          <ul>
-            <li>اطلاع‌رسانی جهت ایمنی شغلی</li>
-            <li>اطلاع‌رسانی جهت ایمنی عمومی در یک تأسیسات خاص</li>
-            <li>پخش همگانی پیام هشدار جهت ایمنی عموم مردم</li>
-            <li>فعال‌سازی برنامه‌های پاسخ اضطراری و ارزیابی وضعیت</li>
-            <li>کنترل شریان‌های حیاتی و تأسیسات زیربنایی در مقیاس وسیع</li>
-            <li>کنترل تأسیسات در محل / درون‌سایتی</li>
-            <li>کنترل ناوگان حمل‌ونقل انبوه‌بر پرسرعت</li>
-            <li>کنترل ناوگان حمل‌ونقل انبوه‌بر کم‌سرعت</li>
-            <li>کنترل وسایل نقلیه مستقل / انفرادی</li>
-            <li>کنترل تجهیزات، دارایی‌ها و فرآیندهای صنعتی</li>
-            <li>کنترل مواد شیمیایی صنعتی</li>
-            <li>کنترل تجهیزات، دارایی‌ها و فرآیندهای تجاری</li>
-            <li>کنترل دسترسی در مقیاس وسیع</li>
-            <li>کنترل دسترسی در محل / درون‌سایتی</li>
-          </ul>
-          <div class="btn-row">
-            <button class="info-btn" type="button" data-modal="m-important">مهم‌ترین کاربرد</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- 11 -->
-      <section class="slide" id="s11" data-nav="مزایای بالقوه ناشی از کاربردها" data-crumb="مزایای بالقوه ناشی از کاربردها">
-        <span class="slide__kicker">مزایا</span>
-        <h2 class="slide__title">مزایای بالقوه ناشی از کاربردها</h2>
-        <div class="slide__body">
-          <ul>
-            <li>ایمنی عمومی</li>
-            <li>ایمنی کارکنان</li>
-            <li>حفاظت از اموال و دارایی‌ها</li>
-            <li>حفاظت از تجهیزات و عملیات</li>
-            <li>ازسرگیری و تداوم کسب‌وکار</li>
-            <li>حفاظت از درآمد و جلوگیری از زیان مالی</li>
-          </ul>
-          <p class="callout">
-            <span class="callout__title">نکته</span>
-            «حفظ ایمنی جانی» و «حفاظت از اموال، دارایی‌ها، تجهیزات و عملیات» مزیت اولیه هستند؛
-            و ازسرگیری سریع، تداوم کسب‌وکار، صیانت از درآمد و کاهش خسارت مالی، مزایای ثانویه.
-          </p>
-        </div>
-      </section>
-
-      <!-- 12 -->
-      <section class="slide" id="s12" data-nav="توانمندی و تمایل" data-crumb="توانمندی و تمایل برای کنترل انسانی در برابر کاربردهای خودکار">
-        <span class="slide__kicker">توانمندی و تمایل</span>
-        <h2 class="slide__title">توانمندی و تمایل برای کنترل انسانی در برابر کاربردهای خودکار</h2>
-        <div class="slide__body">
-          <p class="lead">امکان‌پذیری عمدتاً به توانمندی‌های فنی جهت پیاده‌سازی یک کاربرد مشخص مربوط است و تمایل بیشتر به توانایی‌های سازمانی و مسائل خط‌مشی/سیاست‌گذاری در خصوص اجرای آن کاربرد بازمی‌گردد.</p>
-           <div class="grid grid--2">
-            <div class="card">
-              <h3 class="card__title">تمایل قوی به خودکارسازی</h3>
-              <p class="card__text">
-                نگرانی‌های مربوط به زمان تأخیر در فرآیند انتقال سامانه و در فرآیند واکنش رفتاری انسانی 
-              </p>
-            </div>
-             <div class="card">
-              <h3 class="card__title">تمایل ضعیف به خودکارسازی</h3>
-              <p class="card__text">
-                مسئولیت حقوقی و مدنیِ اتخاذ یک اقدام اشتباه به‌صورت خودکار بیش از حد بالاست؛
-                نگرش‌ها در برابر خطاهای ناشی از اقدام نسبت به خطاهای ناشی از عدم اقدام نامتقارن و به‌مراتب منفی‌تر است.
-              </p>
+          <h3 class="slide__subtitle">کاربردهای بالقوه</h3>
+          <div class="slide__body">
+            <ul>
+              <li>اطلاع‌رسانی جهت ایمنی شغلی</li>
+              <li>اطلاع‌رسانی جهت ایمنی عمومی در یک تأسیسات خاص</li>
+              <li>پخش همگانی پیام هشدار جهت ایمنی عموم مردم</li>
+              <li>فعال‌سازی برنامه‌های پاسخ اضطراری و ارزیابی وضعیت</li>
+              <li>کنترل شریان‌های حیاتی و تأسیسات زیربنایی در مقیاس وسیع</li>
+              <li>کنترل تأسیسات در محل / درون‌سایتی</li>
+              <li>کنترل ناوگان حمل‌ونقل انبوه‌بر پرسرعت</li>
+              <li>کنترل ناوگان حمل‌ونقل انبوه‌بر کم‌سرعت</li>
+              <li>کنترل وسایل نقلیه مستقل / انفرادی</li>
+              <li>کنترل تجهیزات، دارایی‌ها و فرآیندهای صنعتی</li>
+              <li>کنترل مواد شیمیایی صنعتی</li>
+              <li>کنترل تجهیزات، دارایی‌ها و فرآیندهای تجاری</li>
+              <li>کنترل دسترسی در مقیاس وسیع</li>
+              <li>کنترل دسترسی در محل / درون‌سایتی</li>
+            </ul>
+            <div class="btn-row">
+              <button class="info-btn" type="button" data-modal="m-important">مهم‌ترین کاربرد</button>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- 13 -->
-       <section class="slide" id="s13" data-nav="حساسیت‌ها و عوامل موثر" data-crumb="حساسیت‌ها و عوامل موثر">
-        <span class="slide__kicker">حساسیت‌ها</span>
-          <h2 class="slide-title">
+          <h3 class="slide__subtitle">مزایای بالقوه ناشی از کاربردها</h3>
+          <div class="slide__body">
+            <ul>
+              <li>ایمنی عمومی</li>
+              <li>ایمنی کارکنان</li>
+              <li>حفاظت از اموال و دارایی‌ها</li>
+              <li>حفاظت از تجهیزات و عملیات</li>
+              <li>ازسرگیری و تداوم کسب‌وکار</li>
+              <li>حفاظت از درآمد و جلوگیری از زیان مالی</li>
+            </ul>
+            <p class="callout">
+              <span class="callout__title">نکته: </span>
+              «حفظ ایمنی جانی» و «حفاظت از اموال، دارایی‌ها، تجهیزات و عملیات» مزیت اولیه هستند؛
+              و ازسرگیری سریع، تداوم کسب‌وکار، صیانت از درآمد و کاهش خسارت مالی، مزایای ثانویه.
+            </p>
+          </div>
+          <h3 class="slide__subtitle">توانمندی و تمایل برای کنترل انسانی در برابر کاربردهای خودکار</h3>
+          <div class="slide__body">
+            <p class="lead">امکان‌پذیری عمدتاً به توانمندی‌های فنی جهت پیاده‌سازی یک کاربرد مشخص مربوط است و تمایل بیشتر به توانایی‌های سازمانی و مسائل خط‌مشی/سیاست‌گذاری در خصوص اجرای آن کاربرد بازمی‌گردد.</p>
+            <div class="grid grid--2">
+              <div class="card">
+                <h3 class="card__title">تمایل قوی به خودکارسازی</h3>
+                <p class="card__text">
+                  نگرانی‌های مربوط به زمان تأخیر در فرآیند انتقال سامانه و در فرآیند واکنش رفتاری انسانی 
+                </p>
+              </div>
+              <div class="card">
+                <h3 class="card__title">تمایل ضعیف به خودکارسازی</h3>
+                <p class="card__text">
+                  مسئولیت حقوقی و مدنیِ اتخاذ یک اقدام اشتباه به‌صورت خودکار بیش از حد بالاست؛
+                  نگرش‌ها در برابر خطاهای ناشی از اقدام نسبت به خطاهای ناشی از عدم اقدام نامتقارن و به‌مراتب منفی‌تر است.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">
             حساسیت‌های کلیدی سیستم و مسائل سازمانی مؤثر بر توانمندی و تمایل بالقوه جهت استفاده
-          </h2>
-          <p class="slide-body">
-            در صورتی که بر حساسیت‌های سیستم و موانع بالقوه سازمانی غلبه شود، پتانسیل سازمان‌های مختلف برای اعمال تغییرات عملیاتی افزایش می‌یابد.
-          </p>
-          <div class="modal-buttons">
-            <button class="info-btn" type="button" data-modal="m-sys-sens">حساسیت‌های سیستم</button>
-            <button class="info-btn" type="button" data-modal="m-org-barriers">موانع سازمانی، پیچیدگی‌ها و مسائل اجرایی</button>
+          </h3>
+          <div class="slide-body">
+            <p class="lead">در صورتی که بر حساسیت‌های سیستم و موانع بالقوه سازمانی غلبه شود، پتانسیل سازمان‌های مختلف برای اعمال تغییرات عملیاتی افزایش می‌یابد.</p>
+            <div class="modal-buttons">
+              <button class="info-btn" type="button" data-modal="m-sys-sens">حساسیت‌های سیستم</button>
+              <button class="info-btn" type="button" data-modal="m-org-barriers">موانع سازمانی، پیچیدگی‌ها و مسائل اجرایی</button>
+            </div>
           </div>
-      </section>
-
-      <!-- 14 -->
-      <section class="slide" id="s14" data-nav="وابستگی متقابل بخش‌ها" data-crumb="وابستگی متقابل بخش‌ها">
-        <span class="slide__kicker">وابستگی متقابل</span>
-        <h2 class="slide__title">وابستگی متقابل بخش‌ها</h2>
-        <div class="slide__body">
-          <p class="lead">این وابستگی‌ها را در سه رده (Tier) طبقه‌بندی می‌کنند:</p>
-          <div class="grid grid--3">
-            <div class="card">
-              <h3 class="card__title">رده اول</h3>
-              <p class="card__text">برق، مخابرات و فناوری اطلاعات.</p>
-            </div>
-            <div class="card">
-              <h3 class="card__title">رده دوم</h3>
-              <p class="card__text">حمل‌ونقل، تأسیسات گاز، تأسیسات آب، ایمنی عمومی و سیستم‌های مالی.</p>
-            </div>
-            <div class="card">
-              <h3 class="card__title">رده سوم</h3>
-              <p class="card__text">حمل‌ونقل انبوه، بیمارستان‌ها، اورژانس پزشکی، آموزش، بیمه، و بخش‌های تجاری/صنعتی.</p>
+          <h3 class="slide__subtitle">وابستگی متقابل بخش‌ها</h3>
+          <div class="slide__body">
+            <p class="lead">این وابستگی‌ها را در سه رده طبقه‌بندی می‌کنند که سازمان ها بیشترین وابستگی را به رده اول و
+              کمترین وابستگی را به رده دوم داشتند.
+            </p>
+            <div class="grid grid--3">
+              <div class="card">
+                <h3 class="card__title">رده اول</h3>
+                <p class="card__text">برق، مخابرات و فناوری اطلاعات.</p>
+              </div>
+              <div class="card">
+                <h3 class="card__title">رده دوم</h3>
+                <p class="card__text">حمل‌ونقل، تأسیسات گاز، تأسیسات آب، ایمنی عمومی و سیستم‌های مالی.</p>
+              </div>
+              <div class="card">
+                <h3 class="card__title">رده سوم</h3>
+                <p class="card__text">حمل‌ونقل انبوه، بیمارستان‌ها، اورژانس پزشکی، آموزش، بیمه، و بخش‌های تجاری/صنعتی.</p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- 15 -->
-      <section class="slide" id="s15" data-nav="سایر یافته‌ها" data-crumb="سایر یافته‌ها">
-        <span class="slide__kicker">یافته‌ها</span>
+        <span class="slide__kicker">سایر یافته‌ها</span>
         <h2 class="slide__title">سایر یافته‌های ویژه به تفکیک بخش‌ها</h2>
-          <p class="slide-body">
-          
-          </p>
-      </section>
-
-      <!-- 16 -->
-      <section class="slide" id="s16" data-nav="مسائل و چالش‌های بالقوه" data-crumb="مسائل و چالش‌های بالقوه">
+        <div class="slide__body">
+          <ul>
+            <li>آمادگی پایه در برابر زلزله و برنامه‌ریزی پاسخ</li>
+            <li>اهداف و اولویت‌های برنامه‌ریزی پاسخ</li>
+            <li>سطح بلوغ برنامه‌ریزی واکنش جامع و فرهنگ سازمانی</li>
+            <li>فعالیت‌های واکنشی در ثانیه‌ها، دقیقه‌ها و ساعت‌های پس از تشخیص جنبش زمین</li>
+            <li>کاربرد فعلی و تجربیات کار با سامانه‌های هشدار و سایر</li>
+          </ul>
+        </div>
         <span class="slide__kicker">چالش‌ها</span>
         <h2 class="slide__title">مسائل و چالش‌های بالقوه</h2>
         <div class="slide__body">
+          <p class="lead">برخی از دغدغه‌ها و توصیه‌های کلیدی استخراج‌شده از این مصاحبه‌ها</p>
           <div class="btn-row">
             <button class="info-btn" type="button" data-modal="m-design">ملاحظات طراحی و عملکرد سامانه</button>
             <button class="info-btn" type="button" data-modal="m-governance">ساختار حاکمیت و مدیریت سامانه</button>
@@ -347,28 +316,27 @@
         </div>
       </section>
 
-      <!-- 17 -->
-      <section class="slide" id="s16" data-nav="مقالات پیشنهادی" data-crumb="مقالات پیشنهادی">
-        <span class="slide__kicker">مقالات پیشنهادی</span>
-        <h2 class="slide__title">مقالات پیشنهادی</h2>
+      <!-- 5 -->
+
+      <section class="slide" id="s5" data-nav="پژوهش های مشابه" data-crumb="دو پژوهش مشابه با مزایا و هزینه های EEW">
+        <span class="slide__kicker">پژوهش های مشابه</span>
+        <h2 class="slide__title">پژوهش های کارآمد</h2>
         <div class="slide__body">
-          <ul>
-            <li>Benefit-Cost Analysis for Earthquake Early Warning in Washington State, 2020, Andrew BoutaAlicia Y.E. AhnAlicia Y.E. AhnAnn BostromAnn BostromJohn E. Vidale</li>
-            <li>This benefit-cost analysis (BCA) assesses the economic value of the implementation and operation of an earthquake early warning system (EEWS) over a 50-year period in the state of Washington. Based on a cost avoidance approach to assess benefits, this analysis compares the expected economic losses under earthquake scenarios with and without an operating EEWS. The FEMA’s earthquake economic loss software program, Hazards US Multi-Hazard (HAZUS-MH), is used to make these comparisons. This analysis demonstrates the net benefits of an EEWS for Washington residents. A Monte Carlo simulation predicts a positive net present value for Washington residents at a 98% probability. A mean savings of $289 million is predicted from the implementation and operation of the proposed EEWS, an amount that considers only some of the potential benefits.</li>
-            <li>The Limits of Earthquake Early Warning Accuracy and Best Alerting Strategy, 2019,     Sarah E. MinsonAnnemarie BaltayElizabeth S. Cochran Men-Andrin Meier</li>
-            <li>We explore how accurate earthquake early warning (EEW) can be, given our limited ability to forecast expected shaking even if the earthquake source is known. Because of the strong variability of ground motion metrics, such as peak ground acceleration (PGA) and peak ground velocity (PGV), we find that correct alerts (i.e., alerts that accurately estimate the ground motion will be above a predetermined damage threshold) are not expected to be the most common EEW outcome even when the earthquake magnitude and location are accurately determined. Infrequently, ground motion variability results in a user receiving a false alert because the ground motion turned out to be significantly smaller than the system expected. More commonly, users will experience missed alerts when the system does not issue an alert but the user experiences potentially damaging shaking. Despite these inherit limitations, EEW can significantly mitigate earthquake losses for false-alert-tolerant users who choose to receive alerts for expected ground motions much smaller than the level that could cause damage. Although this results in many false alerts (unnecessary alerts for earthquakes that do not produce damaging ground shaking), it minimizes the number of missed alerts and produces overall optimal performance.</li>
-          </ul>
+          <p class="lead"> در مورد فایده‌ها و هزینه‌های سامانه هشدار سریع زلزله</p>
+          <div class="grid grid--1">
+            <a class="card card--link" href="https://www.researchgate.net/publication/341080552_Benefit-Cost_Analysis_for_Earthquake_Early_Warning_in_Washington_State">
+              <h3 class="card__title">Benefit-Cost Analysis for Earthquake Early Warning in Washington State <em>A. Bouta, A. Y. E. Ahn, A. Bostrom, and J. E. Vidale</em></h3>
+              <p class="card__text"><strong>Abstract: </strong>This benefit-cost analysis (BCA) assesses the economic value of the implementation and operation of an earthquake early warning system (EEWS) over a 50-year period in the state of Washington. Based on a cost avoidance approach to assess benefits, this analysis compares the expected economic losses under earthquake scenarios with and without an operating EEWS. The FEMA’s earthquake economic loss software program, Hazards US Multi-Hazard (HAZUS-MH), is used to make these comparisons. This analysis demonstrates the net benefits of an EEWS for Washington residents. A Monte Carlo simulation predicts a positive net present value for Washington residents at a 98% probability. A mean savings of $289 million is predicted from the implementation and operation of the proposed EEWS, an amount that considers only some of the potential benefits.</p>
+            </a>
+            <a class="card card--link" href="https://www.researchgate.net/publication/331254724_The_Limits_of_Earthquake_Early_Warning_Accuracy_and_Best_Alerting_Strategy">
+              <h3 class="card__title">The Limits of Earthquake Early Warning Accuracy and Best Alerting Strategy <em>Minson, S.E.; Baltay, A.S.; Cochran, E.S.; Hanks, T.C.; Page, M.T.; McBride, S.K.; Milner, K.R.; Meier, M.A</em></h3>
+              <p class="card__text"><strong>Abstract: </strong>We explore how accurate earthquake early warning (EEW) can be, given our limited ability to forecast expected shaking even if the earthquake source is known. Because of the strong variability of ground motion metrics, such as peak ground acceleration (PGA) and peak ground velocity (PGV), we find that correct alerts (i.e., alerts that accurately estimate the ground motion will be above a predetermined damage threshold) are not expected to be the most common EEW outcome even when the earthquake magnitude and location are accurately determined. Infrequently, ground motion variability results in a user receiving a false alert because the ground motion turned out to be significantly smaller than the system expected. More commonly, users will experience missed alerts when the system does not issue an alert but the user experiences potentially damaging shaking. Despite these inherit limitations, EEW can significantly mitigate earthquake losses for false-alert-tolerant users who choose to receive alerts for expected ground motions much smaller than the level that could cause damage. Although this results in many false alerts (unnecessary alerts for earthquakes that do not produce damaging ground shaking), it minimizes the number of missed alerts and produces overall optimal performance.</p>
+            </a>
+          </div>
         </div>
       </section>
 
     </div>
-
-    <!-- ===== Slide navigation ===== -->
-    <nav class="slide-nav" aria-label="ناوبری اسلاید">
-      <button class="nav-btn" type="button" id="prevBtn">اسلاید قبل</button>
-      <span class="slide-counter" id="slideCounter">۱ / ۱۶</span>
-      <button class="nav-btn nav-btn--ghost" type="button" id="nextBtn">اسلاید بعد</button>
-    </nav>
 
   </main>
 </div>
@@ -422,7 +390,7 @@
   </template>
 
   <template data-modal-id="m-public" data-modal-title="دسترسی عمومی">
-    <p>منافع اجتماعی کلان را بسیار بالا ارزیابی کردند. حتی دریافت چند ثانیه تا چند ده ثانیه زمان می‌تواند به هزاران و چه بسا میلیون‌ها نفر کمک کند.</p>
+    <p>فایده اجتماعی کلان را بسیار بالا ارزیابی کردند. حتی دریافت چند ثانیه تا چند ده ثانیه زمان می‌تواند به هزاران و چه بسا میلیون‌ها نفر کمک کند.</p>
     <p>حتی نفسِ تلاش، اثرات آموزشی عمیقی دارد و جامعه را به لحاظ روانی برای وقوع زلزله آماده‌تر می‌سازد.</p>
   </template>
 
@@ -473,7 +441,7 @@
     <ul>
       <li>سامانه هشدار سریع زلزله یک «حق اجتماعی/استحقاق عمومی» است و مسئولیت ایجاد، توسعه و نگهداری آن بر عهده حاکمیت می‌باشد.</li>
       <li>یک منبع تأمین مالی پایدار، ایمن و مستمر نیاز است.</li>
-      <li>شناسایی شیوه‌های مشارکت و منافع جانبی برای سازمان‌ها.</li>
+      <li>شناسایی شیوه‌های مشارکت و فایده جانبی برای سازمان‌ها.</li>
     </ul>
   </template>
 
